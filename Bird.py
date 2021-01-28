@@ -48,18 +48,18 @@ class Bird:
             if self.tilt > -90:
                 self.tilt -= self.RotVel
 
-    def Draw(self,win):
+    def draw(self,win):
         self.imgsCount += 1
         if self.imgsCount < self.AnimationTime:
             self.img = self.Imgs[0]
-        elif self.imgsCount < self.AnimationTime*2
-            self.img = self.imgs[1]
-        elif self.imgsCount < self.AnimationTime*3
-            self.img = self.imgs[2]
-        elif self.imgsCount < self.AnimationTime*4
-            self.img = self.imgs[0]
+        elif self.imgsCount < self.AnimationTime*2:
+            self.img = self.Imgs[1]
+        elif self.imgsCount < self.AnimationTime*3:
+            self.img = self.Imgs[2]
+        elif self.imgsCount < self.AnimationTime*4:
+            self.img = self.Imgs[0]
         elif self.imgsCount < self.AnimationTime*4 + 1:
-            self.img = self.imgs[1]
+            self.img = self.Imgs[1]
             self.imgsCount = 0
 
         if self.tilt <= -80 :
@@ -67,5 +67,8 @@ class Bird:
             self.imgsCount =  self.AnimationTime * 2
 
         rotatedImage = pg.transform.rotate(self.img,self.tilt)
-        newRect = rotatedImage.get_rect(center = image.get_rect)
-        win.blit
+        newRect = rotatedImage.get_rect(center = self.img.get_rect(topleft = (self.x,self.y)).center)
+        win.blit(rotatedImage,newRect.topleft)
+
+    def getMask(self):
+        return pg.mask.from_surface(self.img)
