@@ -25,16 +25,15 @@ class Bird:
 
     def jump(self):
         self.vel = -10.5
-        self.tiltCount = 0
+        self.tickCount = 0
         self.height = self.y
 
-    def Move(self):
-        self.tiltCount += 1
+    def move(self):
+        self.tickCount += 1
+        d = self.vel * self.imgsCount + 0.5 * self.tickCount**2
 
-        d = self.vel * self.imgsCount + 1.5 * self.tickCount**2
-
-        if d >=  16:
-            d = 16
+        if d >=  5:
+            d = 5
 
         if d < 0:
             d -= 2

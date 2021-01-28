@@ -4,7 +4,7 @@ import sourceGame as sg
 from Bird import Bird
 
 
-size = (600,600)
+size = (500,800)
 screen = pg.display.set_mode(size)
 
 pg.display.set_caption("You welcome")
@@ -17,12 +17,12 @@ def drawWindow(win,bird):
 
 
 
-
 running = True
-bird = Bird(400,400)
+bird = Bird(250,400)
 while running:
     for event in pg.event.get():
         if event.type == pg.QUIT:
             running = False
 
+    bird.move()
     drawWindow(screen,bird)
