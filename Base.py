@@ -27,5 +27,5 @@ class Base:
             self.x2 = self.x1 + self.Width
 
     def draw(self,win):
-        windblit(self.img,(self.x1,self.y))
-        windblit(self.img,(self.x1,self.y))
+        win.blit(self.Img,(self.x1,self.y))
+        win.blit(self.Img,(self.x2,self.y))

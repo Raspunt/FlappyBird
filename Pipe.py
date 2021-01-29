@@ -10,11 +10,14 @@ class Pipe:
         self.x = x
         self.height = 0
 
-
         self.top = 0
         self.botton = 0
         self.PipeTop = pg.transform.flip(sg.PipeImg,False,True)
-        self.PipeBotton = sg.BgImg
+        self.PipeBotton = sg.PipeImg
+
+        self.passed = False
+        self.setHeight()
+
 
     def setHeight(self):
         self.height = random.randrange(50,450)
@@ -26,7 +29,7 @@ class Pipe:
 
     def draw(self,win):
         win.blit(self.PipeTop, (self.x,self.top))
-        win.blit(self.Pipe)
+        win.blit(self.PipeBotton,(self.x,self.botton))
 
     def collide(self,bird):
         birdMask = bird.getMask()
