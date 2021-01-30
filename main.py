@@ -36,7 +36,10 @@ while running:
     # bird.move()
     #
     for pipe in pipes :
+        pipe.OverrideVar()
+        pipe.CollideBird(pipe,bird)
         pipe.move()
+    pipe.ReCreatePipe(pipes)
 
     base.move()
     drawWindow(screen,bird,pipes,base)

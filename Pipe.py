@@ -4,7 +4,7 @@ import random
 
 class Pipe:
     GAP = 200
-    VEL = 5
+    VEL = 1
 
     def __init__(self,x):
         self.x = x
@@ -14,6 +14,7 @@ class Pipe:
         self.botton = 0
         self.PipeTop = pg.transform.flip(sg.PipeImg,False,True)
         self.PipeBotton = sg.PipeImg
+
 
         self.passed = False
         self.setHeight()
@@ -46,3 +47,32 @@ class Pipe:
             return True
 
         return False
+
+
+    store = 0
+    add_pipe = False
+    rem = []
+    def OverrideVar(self):
+        self.add_pipe = False
+        self.rem = []
+
+
+    def CollideBird(self,pipe,bird):
+        if pipe.collide(bird):
+            pass
+        if pipe.x + pipe.PipeTop.get_width() < 0:
+            self.rem.append(pipe)
+
+        if not pipe.passed and pipe.x < bird.x:
+            pipe.passed = True
+            self.add_pipe = True
+        pipe.move()
+
+
+    def ReCreatePipe(self,pipes):
+        if self.add_pipe:
+            self.store += 1
+            pipes.append(Pipe(700))
+
+        for r in self.rem:
+            pipes.remove(r)

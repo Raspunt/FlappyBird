@@ -5,7 +5,7 @@ import random
 
 
 class Base:
-    Vel = 5
+    Vel = 3
     Width = sg.BaseImg.get_width()
     Img = sg.BaseImg
 
