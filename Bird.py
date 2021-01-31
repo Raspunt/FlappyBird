@@ -24,7 +24,7 @@ class Bird:
         self.img =  self.Imgs[0]
 
     def jump(self):
-        self.vel = -10.5
+        self.vel = -1
         self.tickCount = 0
         self.height = self.y
 
@@ -33,7 +33,7 @@ class Bird:
         d = self.vel * self.imgsCount + 0.5 * self.tickCount**2
 
         if d >=  5:
-            d = 5
+            d = 2
 
         if d < 0:
             d -= 2

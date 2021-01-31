@@ -2,9 +2,13 @@ import pygame as pg
 import sourceGame as sg
 import random
 
+
+
+
 class Pipe:
     GAP = 200
     VEL = 1
+
 
     def __init__(self,x):
         self.x = x
@@ -49,7 +53,7 @@ class Pipe:
         return False
 
 
-    store = 0
+
     add_pipe = False
     rem = []
     def OverrideVar(self):
@@ -69,10 +73,11 @@ class Pipe:
         pipe.move()
 
 
-    def ReCreatePipe(self,pipes):
+    def ReCreatePipe(self,pipes,win,score):
         if self.add_pipe:
-            self.store += 1
+            score += 1
             pipes.append(Pipe(700))
 
         for r in self.rem:
             pipes.remove(r)
+        return score
